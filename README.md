@@ -1,1 +1,1 @@
-# kilat-laundry
+# Kilat Laundry
