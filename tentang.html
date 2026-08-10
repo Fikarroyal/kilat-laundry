@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tentang Kami — Kilat Laundry</title>
+<title>Tentang Kami | Kilat Laundry</title>
 <link rel="icon" href="img/logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,8 +14,8 @@
     --bg-alt: #E7F0EA;
     --ink: #1E3934;
     --ink-soft: #4B655F;
-    --primary: #2F7A72;
-    --primary-dark: #1F5751;
+    --primary: #1A1A1A;
+    --primary-dark: #000000;
     --accent: #F2A154;
     --accent-dark: #C97A2E;
     --accent-soft: #FCE7CE;
@@ -77,16 +77,17 @@
     max-width: 1120px; margin: 0 auto; padding: 16px 24px;
     display:flex; align-items:center; justify-content: space-between;
   }
-  .brand{ display:flex; align-items:center; gap:10px; }
+  .brand{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
   .brand img, .brand svg.brand-logo{ width: 38px; height:38px; flex-shrink:0; }
-  .brand span{ font-family: var(--display); font-weight:700; font-size: 20px; }
-  .nav-links{ display:flex; align-items:center; gap: 32px; }
-  .nav-links a{ font-weight:600; font-size: 15px; color: var(--ink-soft); transition: color .15s; }
+  .brand span{ font-family: var(--display); font-weight:700; font-size: 20px; white-space:nowrap; }
+  .nav-links{ display:flex; align-items:center; gap: 24px; }
+  .nav-links a{ font-weight:600; font-size: 15px; color: var(--ink-soft); transition: color .15s; white-space:nowrap; }
   .nav-links a:hover{ color: var(--primary-dark); }
-  .nav-cta{ display:flex; align-items:center; gap:14px; }
-  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; }
+  .nav-links a.active{ color: var(--primary-dark); }
+  .nav-cta{ display:flex; align-items:center; gap:14px; flex-shrink:0; }
+  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; align-items:center; }
 
-  @media (max-width: 860px){
+  @media (max-width: 1100px){
     .nav-links{
       position:absolute; top:100%; left:0; right:0; background: var(--paper);
       flex-direction:column; align-items:flex-start; gap:0; padding: 8px 24px 20px;
@@ -121,17 +122,17 @@
   /* ---------- Ticket stub (signature element) ---------- */
   .ticket{
     position: relative; background: var(--paper); border-radius: 14px;
-    box-shadow: 0 18px 40px -18px rgba(31,87,81,.35);
+    box-shadow: 0 18px 40px -18px rgba(0,0,0,.35);
     display:flex; transform: rotate(-3deg);
     animation: float 6s ease-in-out infinite;
   }
   @keyframes float{ 0%,100%{ transform: rotate(-3deg) translateY(0);} 50%{ transform: rotate(-3deg) translateY(-8px);} }
   .ticket-main{ flex:1; padding: 26px 22px; }
   .ticket-main .label{ font-family: var(--mono); font-size: 11.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing:.06em; }
-  .ticket-row{ display:flex; justify-content: space-between; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); }
+  .ticket-row{ display:flex; justify-content: space-between; align-items:baseline; gap: 16px; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); }
   .ticket-row:first-of-type{ border-top:none; margin-top: 18px; padding-top:0; }
-  .ticket-row .k{ color: var(--ink-soft); font-size: 14px; }
-  .ticket-row .v{ font-family: var(--mono); font-weight:600; font-size: 14px; }
+  .ticket-row .k{ color: var(--ink-soft); font-size: 14px; flex-shrink:0; }
+  .ticket-row .v{ font-family: var(--mono); font-weight:600; font-size: 14px; text-align:right; }
   .ticket-title{ font-family: var(--display); font-size: 20px; margin-top: 4px; }
   .ticket-stub-side{
     width: 96px; border-left: 2px dashed var(--line); position:relative;
@@ -173,7 +174,7 @@
   .svc-card p{ color: var(--ink-soft); font-size: 14.5px; flex:1; }
   .svc-card .price-tear{
     border-top: 1px dashed var(--line); margin-top: 4px; padding-top: 12px;
-    display:flex; justify-content: space-between; align-items:center;
+    display:flex; justify-content: space-between; align-items:center; gap: 10px;
   }
   .svc-card .price-tear .from{ font-size: 12px; color: var(--ink-soft); }
   .svc-card .price-tear .price{ font-family: var(--mono); font-weight:700; color: var(--primary-dark); }
@@ -513,9 +514,9 @@
         <div>
           <span class="eyebrow" style="margin-bottom:16px;">Cerita Kami</span>
           <h2 style="margin-top:16px;">Dari satu motor dan satu mesin cuci</h2>
-          <p>Kilat Laundry mulai beroperasi dari sebuah rumah kontrakan kecil, dengan satu mesin cuci dan satu motor untuk jemput-antar. Awalnya hanya melayani tetangga sekitar yang tidak sempat mencuci sendiri.</p>
+          <p>Kilat Laundry mulai beroperasi dari sebuah rumah kontrakan kecil, dengan satu mesin cuci dan satu motor untuk jemput antar. Awalnya hanya melayani tetangga sekitar yang tidak sempat mencuci sendiri.</p>
           <p>Seiring waktu, permintaan datang dari mahasiswa, karyawan kantoran, hingga keluarga kecil yang butuh bantuan mengurus cucian harian. Kami menjaga hal yang sama sejak awal: jemput tepat waktu, cuci dengan bersih, antar dalam kondisi rapi dan harum</p>
-          <p>Sekarang Kilat Laundry melayani ratusan pelanggan tetap, tapi prinsipnya tidak berubah "cucianmu diperlakukan seperti cucian kami sendiri".</p>
+          <p>Sekarang Kilat Laundry melayani ratusan pelanggan tetap, namun prinsipnya tidak berubah "cucian Anda diperlakukan selayaknya cucian kami sendiri".</p>
         </div>
         <div>
           <div class="ticket" style="transform: rotate(-2deg);">
@@ -606,13 +607,13 @@
             <path d="M0 90 Q200 60 380 100 T600 80" stroke="#CFE0D6" stroke-width="6" fill="none"/>
             <path d="M120 0 L140 260" stroke="#CFE0D6" stroke-width="6"/>
             <path d="M420 0 L440 260" stroke="#CFE0D6" stroke-width="6"/>
-            <circle cx="300" cy="130" r="10" fill="#2F7A72"/>
-            <path d="M300 130 m0 -34 a24 24 0 1 1 -0.1 0 z" fill="#2F7A72" opacity="0"/>
+            <circle cx="300" cy="130" r="10" fill="#1A1A1A"/>
+            <path d="M300 130 m0 -34 a24 24 0 1 1 -0.1 0 z" fill="#1A1A1A" opacity="0"/>
             <path d="M300 96c14 0 24 10.7 24 23.8 0 17.5-24 40.2-24 40.2s-24-22.7-24-40.2C276 106.7 286 96 300 96z" fill="#F2A154"/>
             <circle cx="300" cy="119" r="8" fill="#FFFFFF"/>
-            <circle cx="150" cy="70" r="5" fill="#2F7A72" opacity=".6"/>
-            <circle cx="460" cy="150" r="5" fill="#2F7A72" opacity=".6"/>
-            <circle cx="90" cy="180" r="5" fill="#2F7A72" opacity=".6"/>
+            <circle cx="150" cy="70" r="5" fill="#1A1A1A" opacity=".6"/>
+            <circle cx="460" cy="150" r="5" fill="#1A1A1A" opacity=".6"/>
+            <circle cx="90" cy="180" r="5" fill="#1A1A1A" opacity=".6"/>
           </svg>
         </div>
         <div class="map-info">
@@ -632,8 +633,8 @@
   <section>
     <div class="cta-band reveal">
       <div>
-        <h2>Yuk cobain Kilat Laundry!</h2>
-        <p>Penjemputan pertama dan seterusnya, kami pastikan tepat waktu!</p>
+        <h2>Coba Kilat Laundry Sekarang</h2>
+        <p>Penjemputan pertama dan seterusnya, kami pastikan tepat waktu.</p>
       </div>
       <a class="btn btn-primary" href="jemput.html">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12l2-6h14l2 6M5 12h14v6a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-6z"/><circle cx="8" cy="19.5" r="1.2"/><circle cx="16" cy="19.5" r="1.2"/></svg>
