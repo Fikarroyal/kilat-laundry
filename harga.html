@@ -85,22 +85,35 @@
   .nav-links a:hover{ color: var(--primary-dark); }
   .nav-links a.active{ color: var(--primary-dark); }
   .nav-cta{ display:flex; align-items:center; gap:14px; flex-shrink:0; }
-  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; align-items:center; }
+  .nav-toggle{
+  display:none; background:none; border:none; cursor:pointer; align-items:center;
+  color: var(--primary-dark);          /* ini yang bikin ikon jadi hitam */
+  -webkit-appearance:none; appearance:none;
+  padding: 6px; border-radius: 8px;
+}
 
-  @media (max-width: 1100px){
+@media (max-width: 1100px){
     .nav-links{
       position:absolute; top:100%; left:0; right:0; background: var(--paper);
-      flex-direction:column; align-items:flex-start; gap:0; padding: 8px 24px 20px;
+      flex-direction:column; align-items:flex-start; gap:0; padding: 10px 24px 22px;
       border-bottom: 1px solid var(--line);
       transform-origin: top; transform: scaleY(0); opacity:0; pointer-events:none;
       transition: transform .18s ease, opacity .18s ease;
     }
     .nav-links.open{ transform: scaleY(1); opacity:1; pointer-events:auto; }
-    .nav-links a{ padding: 12px 0; width:100%; border-bottom: 1px dashed var(--line); }
-    .nav-toggle{ display:block; }
+    .nav-links li{ width:100%; }
+    .nav-links a{
+      display:block;
+      padding: 16px 4px;      /* jarak antar item lebih lega & konsisten */
+      width:100%;
+      font-size: 17px;        /* teks diperbesar dari 15px */
+      border-bottom: 1px dashed var(--line);
+    }
+    .nav-links li:last-child a{ border-bottom:none; }
+    .nav-toggle{ display:flex; }
     .nav-cta .btn-text{ display:none; }
-  }
-
+}
+  
   /* ---------- Hero ---------- */
   .hero{ padding-top: 64px; padding-bottom: 40px; }
   .hero .wrap{
