@@ -193,29 +193,54 @@
   .svc-card .price-tear .price{ font-family: var(--mono); font-weight:700; color: var(--primary-dark); }
 
   /* ---------- How it works ---------- */
-  .steps{ display:grid; grid-template-columns: repeat(3,1fr); gap: 28px; counter-reset: step; }
-  @media (max-width: 800px){ .steps{ grid-template-columns: 1fr; } }
-  .step{ position:relative; padding-left: 0; }
-  .step .step-no{
-    font-family: var(--mono); font-size: 13px; color: var(--accent-dark);
-    background: var(--accent-soft); display:inline-block; padding: 3px 10px; border-radius: 999px; margin-bottom: 14px;
+.steps{ display:grid; grid-template-columns: repeat(3,1fr); gap: 28px; counter-reset: step; }
+@media (max-width: 800px){
+  .steps{ display:flex; flex-direction:column; gap: 32px; }
+}
+
+.step{ position:relative; padding-left: 0; }
+.step .step-no{
+  font-family: var(--mono); font-size: 13px; color: var(--accent-dark);
+  background: var(--accent-soft); display:inline-block; padding: 3px 10px; border-radius: 999px; margin-bottom: 14px;
+}
+.step h3{ font-size: 19px; margin-bottom: 8px; }
+.step p{ color: var(--ink-soft); font-size: 14.5px; }
+.step .icon-badge{
+  width:52px; height:52px; border-radius: 50%; background: var(--paper); border: 2px solid var(--line);
+  display:flex; align-items:center; justify-content:center; color: var(--primary); margin-bottom: 16px;
+}
+
+/* Desktop: konten ditengahkan supaya garis putus-putus pas dari icon step 1 sampai step 3 */
+@media (min-width: 801px){
+  .steps{ position:relative; }
+  .step{ text-align:center; }
+  .step .icon-badge{ margin:0 auto 16px; }
+  .steps::before{
+    content:""; position:absolute; top:26px; left: 16.6%; right:16.6%; height:0;
+    border-top: 2px dashed var(--line); z-index:0;
   }
-  .step h3{ font-size: 19px; margin-bottom: 8px; }
-  .step p{ color: var(--ink-soft); font-size: 14.5px; }
+}
+
+/* Mobile: layout icon-kiri/teks-kanan, garis putus-putus vertikal nyambung antar step */
+@media (max-width: 800px){
+  .step-row{
+    display:flex; align-items:flex-start; gap:16px; position:relative;
+  }
   .step .icon-badge{
-    width:52px; height:52px; border-radius: 50%; background: var(--paper); border: 2px solid var(--line);
-    display:flex; align-items:center; justify-content:center; color: var(--primary); margin-bottom: 16px;
+    margin-bottom:0; flex-shrink:0; position:relative; z-index:1;
   }
-  .step-connector{
-    display:none;
+  .step:not(:last-child) .step-row::after{
+    content:"";
+    position:absolute;
+    top:52px;      /* mulai persis di bawah lingkaran icon */
+    bottom:-98px;  /* nyambung sampai titik tengah icon step berikutnya
+                       (gap antar step 32px + tinggi label "Langkah" ±40px + setengah icon 26px) */
+    left:25px;     /* sejajar titik tengah icon (lebar icon 52px / 2) */
+    width:0;
+    border-left:2px dashed var(--line);
+    z-index:0;
   }
-  @media (min-width: 801px){
-    .steps{ position:relative; }
-    .steps::before{
-      content:""; position:absolute; top:26px; left: 16.6%; right:16.6%; height:0;
-      border-top: 2px dashed var(--line); z-index:0;
-    }
-  }
+}
 
   /* ---------- Pricing ---------- */
   .price-board{
