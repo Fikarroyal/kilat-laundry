@@ -14,8 +14,8 @@
     --bg-alt: #E7F0EA;
     --ink: #1E3934;
     --ink-soft: #4B655F;
-    --primary: #2F7A72;
-    --primary-dark: #1F5751;
+    --primary: #1A1A1A;
+    --primary-dark: #000000;
     --accent: #F2A154;
     --accent-dark: #C97A2E;
     --accent-soft: #FCE7CE;
@@ -77,16 +77,17 @@
     max-width: 1120px; margin: 0 auto; padding: 16px 24px;
     display:flex; align-items:center; justify-content: space-between;
   }
-  .brand{ display:flex; align-items:center; gap:10px; }
+  .brand{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
   .brand img, .brand svg.brand-logo{ width: 38px; height:38px; flex-shrink:0; }
-  .brand span{ font-family: var(--display); font-weight:700; font-size: 20px; }
-  .nav-links{ display:flex; align-items:center; gap: 32px; }
-  .nav-links a{ font-weight:600; font-size: 15px; color: var(--ink-soft); transition: color .15s; }
+  .brand span{ font-family: var(--display); font-weight:700; font-size: 20px; white-space:nowrap; }
+  .nav-links{ display:flex; align-items:center; gap: 24px; }
+  .nav-links a{ font-weight:600; font-size: 15px; color: var(--ink-soft); transition: color .15s; white-space:nowrap; }
   .nav-links a:hover{ color: var(--primary-dark); }
-  .nav-cta{ display:flex; align-items:center; gap:14px; }
-  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; }
+  .nav-links a.active{ color: var(--primary-dark); }
+  .nav-cta{ display:flex; align-items:center; gap:14px; flex-shrink:0; }
+  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; align-items:center; }
 
-  @media (max-width: 860px){
+  @media (max-width: 1100px){
     .nav-links{
       position:absolute; top:100%; left:0; right:0; background: var(--paper);
       flex-direction:column; align-items:flex-start; gap:0; padding: 8px 24px 20px;
@@ -121,17 +122,17 @@
   /* ---------- Ticket stub (signature element) ---------- */
   .ticket{
     position: relative; background: var(--paper); border-radius: 14px;
-    box-shadow: 0 18px 40px -18px rgba(31,87,81,.35);
+    box-shadow: 0 18px 40px -18px rgba(0,0,0,.35);
     display:flex; transform: rotate(-3deg);
     animation: float 6s ease-in-out infinite;
   }
   @keyframes float{ 0%,100%{ transform: rotate(-3deg) translateY(0);} 50%{ transform: rotate(-3deg) translateY(-8px);} }
   .ticket-main{ flex:1; padding: 26px 22px; }
   .ticket-main .label{ font-family: var(--mono); font-size: 11.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing:.06em; }
-  .ticket-row{ display:flex; justify-content: space-between; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); }
+  .ticket-row{ display:flex; justify-content: space-between; align-items:baseline; gap: 16px; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); }
   .ticket-row:first-of-type{ border-top:none; margin-top: 18px; padding-top:0; }
-  .ticket-row .k{ color: var(--ink-soft); font-size: 14px; }
-  .ticket-row .v{ font-family: var(--mono); font-weight:600; font-size: 14px; }
+  .ticket-row .k{ color: var(--ink-soft); font-size: 14px; flex-shrink:0; }
+  .ticket-row .v{ font-family: var(--mono); font-weight:600; font-size: 14px; text-align:right; }
   .ticket-title{ font-family: var(--display); font-size: 20px; margin-top: 4px; }
   .ticket-stub-side{
     width: 96px; border-left: 2px dashed var(--line); position:relative;
@@ -173,7 +174,7 @@
   .svc-card p{ color: var(--ink-soft); font-size: 14.5px; flex:1; }
   .svc-card .price-tear{
     border-top: 1px dashed var(--line); margin-top: 4px; padding-top: 12px;
-    display:flex; justify-content: space-between; align-items:center;
+    display:flex; justify-content: space-between; align-items:center; gap: 10px;
   }
   .svc-card .price-tear .from{ font-size: 12px; color: var(--ink-soft); }
   .svc-card .price-tear .price{ font-family: var(--mono); font-weight:700; color: var(--primary-dark); }
@@ -501,8 +502,8 @@
     <div class="wrap">
       <div class="breadcrumb"><a href="index.html">Beranda</a> / Jemput Cucian</div>
       <span class="eyebrow">Jemput Cucian</span>
-      <h1>Jadwalkan penjemputan cucianmu</h1>
-      <p>Isi form di bawah, tiketmu akan muncul otomatis di sebelah kanan. Setelah dikirim, kamu akan diarahkan ke WhatsApp untuk konfirmasi terakhir.</p>
+      <h1>Jadwalkan Penjemputan Cucian Anda</h1>
+      <p>Isi formulir berikut, tiket Anda akan muncul secara otomatis di sebelah kanan. Setelah dikirim, Anda akan diarahkan ke WhatsApp untuk konfirmasi akhir.</p>
     </div>
   </section>
 
@@ -516,7 +517,7 @@
             <div class="form-grid">
               <div class="field full" id="fNama">
                 <label for="nama">Nama lengkap</label>
-                <input type="text" id="nama" placeholder="Nama kamu">
+                <input type="text" id="nama" placeholder="Nama Anda">
                 <span class="error-msg">Nama wajib diisi.</span>
               </div>
 
@@ -583,7 +584,7 @@
               </button>
               <a class="btn btn-ghost" href="harga.html">Cek Harga Dulu</a>
             </div>
-            <p class="form-note">Data yang kamu isi hanya digunakan untuk membuat tiket dan menyusun pesan konfirmasi ke WhatsApp outlet. Tidak ada data yang disimpan di server.</p>
+            <p class="form-note">Data yang Anda masukkan hanya digunakan untuk membuat tiket dan menyusun pesan konfirmasi ke WhatsApp outlet. Tidak ada data yang disimpan di server.</p>
           </form>
 
           <!-- SUCCESS STATE -->
@@ -591,7 +592,7 @@
             <div class="icon-circle">
               <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3>Tiket kamu sudah dibuat</h3>
+            <h3>Tiket Anda Telah Dibuat</h3>
             <p>Tiket <b id="successTicketNo">No. 000</b> sudah disiapkan. Klik tombol di bawah untuk kirim detail ini ke WhatsApp outlet agar penjemputan dikonfirmasi.</p>
             <a class="btn btn-primary" id="successWaBtn" href="#" target="_blank" rel="noopener">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 12a8 8 0 1 1-3.6-6.7"/><path d="M20 4l-8.4 8.4M12 4v4h4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -605,7 +606,7 @@
 
         <!-- PREVIEW TIKET -->
         <div class="preview-sticky reveal">
-          <div class="preview-label">Pratinjau tiket kamu</div>
+          <div class="preview-label">Pratinjau Tiket Anda</div>
           <div class="ticket">
             <div class="ticket-main">
               <div class="label">Tiket Cucian</div>
@@ -620,7 +621,7 @@
               <span class="notch bottom"></span>
             </div>
           </div>
-          <p class="section-sub" style="margin-top:20px;">Nomor tiket dibuat otomatis saat kamu mengirim form. Simpan nomor ini untuk mengecek status di halaman Lacak Pesanan.</p>
+          <p class="section-sub" style="margin-top:20px;">Nomor tiket akan dibuat secara otomatis setelah Anda mengirim formulir. Simpan nomor ini untuk mengecek status di halaman Lacak Pesanan.</p>
         </div>
 
       </div>
