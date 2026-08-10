@@ -14,8 +14,8 @@
     --bg-alt: #E7F0EA;
     --ink: #1E3934;
     --ink-soft: #4B655F;
-    --primary: #2F7A72;
-    --primary-dark: #1F5751;
+    --primary: #1A1A1A;
+    --primary-dark: #000000;
     --accent: #F2A154;
     --accent-dark: #C97A2E;
     --accent-soft: #FCE7CE;
@@ -77,16 +77,17 @@
     max-width: 1120px; margin: 0 auto; padding: 16px 24px;
     display:flex; align-items:center; justify-content: space-between;
   }
-  .brand{ display:flex; align-items:center; gap:10px; }
+  .brand{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
   .brand img, .brand svg.brand-logo{ width: 38px; height:38px; flex-shrink:0; }
-  .brand span{ font-family: var(--display); font-weight:700; font-size: 20px; }
-  .nav-links{ display:flex; align-items:center; gap: 32px; }
-  .nav-links a{ font-weight:600; font-size: 15px; color: var(--ink-soft); transition: color .15s; }
+  .brand span{ font-family: var(--display); font-weight:700; font-size: 20px; white-space:nowrap; }
+  .nav-links{ display:flex; align-items:center; gap: 24px; }
+  .nav-links a{ font-weight:600; font-size: 15px; color: var(--ink-soft); transition: color .15s; white-space:nowrap; }
   .nav-links a:hover{ color: var(--primary-dark); }
-  .nav-cta{ display:flex; align-items:center; gap:14px; }
-  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; }
+  .nav-links a.active{ color: var(--primary-dark); }
+  .nav-cta{ display:flex; align-items:center; gap:14px; flex-shrink:0; }
+  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; align-items:center; }
 
-  @media (max-width: 860px){
+  @media (max-width: 1100px){
     .nav-links{
       position:absolute; top:100%; left:0; right:0; background: var(--paper);
       flex-direction:column; align-items:flex-start; gap:0; padding: 8px 24px 20px;
@@ -121,17 +122,17 @@
   /* ---------- Ticket stub (signature element) ---------- */
   .ticket{
     position: relative; background: var(--paper); border-radius: 14px;
-    box-shadow: 0 18px 40px -18px rgba(31,87,81,.35);
+    box-shadow: 0 18px 40px -18px rgba(0,0,0,.35);
     display:flex; transform: rotate(-3deg);
     animation: float 6s ease-in-out infinite;
   }
   @keyframes float{ 0%,100%{ transform: rotate(-3deg) translateY(0);} 50%{ transform: rotate(-3deg) translateY(-8px);} }
   .ticket-main{ flex:1; padding: 26px 22px; }
   .ticket-main .label{ font-family: var(--mono); font-size: 11.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing:.06em; }
-  .ticket-row{ display:flex; justify-content: space-between; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); }
+  .ticket-row{ display:flex; justify-content: space-between; align-items:baseline; gap: 16px; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); }
   .ticket-row:first-of-type{ border-top:none; margin-top: 18px; padding-top:0; }
-  .ticket-row .k{ color: var(--ink-soft); font-size: 14px; }
-  .ticket-row .v{ font-family: var(--mono); font-weight:600; font-size: 14px; }
+  .ticket-row .k{ color: var(--ink-soft); font-size: 14px; flex-shrink:0; }
+  .ticket-row .v{ font-family: var(--mono); font-weight:600; font-size: 14px; text-align:right; }
   .ticket-title{ font-family: var(--display); font-size: 20px; margin-top: 4px; }
   .ticket-stub-side{
     width: 96px; border-left: 2px dashed var(--line); position:relative;
@@ -173,7 +174,7 @@
   .svc-card p{ color: var(--ink-soft); font-size: 14.5px; flex:1; }
   .svc-card .price-tear{
     border-top: 1px dashed var(--line); margin-top: 4px; padding-top: 12px;
-    display:flex; justify-content: space-between; align-items:center;
+    display:flex; justify-content: space-between; align-items:center; gap: 10px;
   }
   .svc-card .price-tear .from{ font-size: 12px; color: var(--ink-soft); }
   .svc-card .price-tear .price{ font-family: var(--mono); font-weight:700; color: var(--primary-dark); }
@@ -578,18 +579,18 @@
             <div class="form-grid">
               <div class="field" id="cNama">
                 <label for="cnama">Nama</label>
-                <input type="text" id="cnama" placeholder="Nama kamu">
+                <input type="text" id="cnama" placeholder="Nama Anda">
                 <span class="error-msg">Nama wajib diisi.</span>
               </div>
               <div class="field" id="cKontak">
                 <label for="ckontak">No. WhatsApp / Email</label>
                 <input type="text" id="ckontak" placeholder="08xx-xxxx-xxxx atau email">
-                <span class="error-msg">Cantumkan cara kami menghubungimu.</span>
+                <span class="error-msg">Cantumkan cara kami dapat menghubungi Anda.</span>
               </div>
               <div class="field full" id="cPesan">
                 <label for="cpesan">Pesan</label>
-                <textarea id="cpesan" placeholder="Tulis pertanyaan atau kendalamu di sini"></textarea>
-                <span class="error-msg">Tulis pesannya dulu ya.</span>
+                <textarea id="cpesan" placeholder="Tulis pertanyaan atau kendala Anda di sini"></textarea>
+                <span class="error-msg">Pesan wajib diisi terlebih dahulu.</span>
               </div>
             </div>
             <div class="form-actions">
@@ -599,7 +600,7 @@
               </button>
               <a class="btn btn-ghost" href="mailto:halo@kilatlaundry.id">Kirim Email Saja</a>
             </div>
-            <p class="form-note">Klik "Kirim ke WhatsApp" akan membuka WhatsApp dengan pesanmu sudah terisi otomatis.</p>
+            <p class="form-note">Klik "Kirim ke WhatsApp" untuk membuka WhatsApp dengan pesan Anda yang telah terisi secara otomatis.</p>
           </form>
         </div>
 
@@ -627,7 +628,7 @@
             Bagaimana cara mengecek status cucian saya?
             <svg class="plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
           </button>
-          <div class="faq-a"><p>Buka halaman <a href="lacak.html" style="color:var(--primary-dark); font-weight:700;">Lacak Pesanan</a> dan masukkan nomor tiketmu.</p></div>
+          <div class="faq-a"><p>Buka halaman <a href="lacak.html" style="color:var(--primary-dark); font-weight:700;">Lacak Pesanan</a> dan masukkan nomor tiket Anda.</p></div>
         </div>
       </div>
     </div>
