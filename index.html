@@ -14,8 +14,8 @@
     --bg-alt: #E7F0EA;
     --ink: #1E3934;
     --ink-soft: #4B655F;
-    --primary: #2F7A72;
-    --primary-dark: #1F5751;
+    --primary: #1A1A1A;
+    --primary-dark: #000000;
     --accent: #F2A154;
     --accent-dark: #C97A2E;
     --accent-soft: #FCE7CE;
@@ -77,16 +77,17 @@
     max-width: 1120px; margin: 0 auto; padding: 16px 24px;
     display:flex; align-items:center; justify-content: space-between;
   }
-  .brand{ display:flex; align-items:center; gap:10px; }
+  .brand{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
   .brand img, .brand svg.brand-logo{ width: 38px; height:38px; flex-shrink:0; }
-  .brand span{ font-family: var(--display); font-weight:700; font-size: 20px; }
-  .nav-links{ display:flex; align-items:center; gap: 32px; }
-  .nav-links a{ font-weight:600; font-size: 15px; color: var(--ink-soft); transition: color .15s; }
+  .brand span{ font-family: var(--display); font-weight:700; font-size: 20px; white-space:nowrap; }
+  .nav-links{ display:flex; align-items:center; gap: 24px; }
+  .nav-links a{ font-weight:600; font-size: 15px; color: var(--ink-soft); transition: color .15s; white-space:nowrap; }
   .nav-links a:hover{ color: var(--primary-dark); }
-  .nav-cta{ display:flex; align-items:center; gap:14px; }
-  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; }
+  .nav-links a.active{ color: var(--primary-dark); }
+  .nav-cta{ display:flex; align-items:center; gap:14px; flex-shrink:0; }
+  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; align-items:center; }
 
-  @media (max-width: 860px){
+  @media (max-width: 1100px){
     .nav-links{
       position:absolute; top:100%; left:0; right:0; background: var(--paper);
       flex-direction:column; align-items:flex-start; gap:0; padding: 8px 24px 20px;
@@ -121,17 +122,17 @@
   /* ---------- Ticket stub (signature element) ---------- */
   .ticket{
     position: relative; background: var(--paper); border-radius: 14px;
-    box-shadow: 0 18px 40px -18px rgba(31,87,81,.35);
+    box-shadow: 0 18px 40px -18px rgba(0,0,0,.35);
     display:flex; transform: rotate(-3deg);
     animation: float 6s ease-in-out infinite;
   }
   @keyframes float{ 0%,100%{ transform: rotate(-3deg) translateY(0);} 50%{ transform: rotate(-3deg) translateY(-8px);} }
   .ticket-main{ flex:1; padding: 26px 22px; }
   .ticket-main .label{ font-family: var(--mono); font-size: 11.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing:.06em; }
-  .ticket-row{ display:flex; justify-content: space-between; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); }
+  .ticket-row{ display:flex; justify-content: space-between; align-items:baseline; gap: 16px; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); }
   .ticket-row:first-of-type{ border-top:none; margin-top: 18px; padding-top:0; }
-  .ticket-row .k{ color: var(--ink-soft); font-size: 14px; }
-  .ticket-row .v{ font-family: var(--mono); font-weight:600; font-size: 14px; }
+  .ticket-row .k{ color: var(--ink-soft); font-size: 14px; flex-shrink:0; }
+  .ticket-row .v{ font-family: var(--mono); font-weight:600; font-size: 14px; text-align:right; }
   .ticket-title{ font-family: var(--display); font-size: 20px; margin-top: 4px; }
   .ticket-stub-side{
     width: 96px; border-left: 2px dashed var(--line); position:relative;
@@ -173,7 +174,7 @@
   .svc-card p{ color: var(--ink-soft); font-size: 14.5px; flex:1; }
   .svc-card .price-tear{
     border-top: 1px dashed var(--line); margin-top: 4px; padding-top: 12px;
-    display:flex; justify-content: space-between; align-items:center;
+    display:flex; justify-content: space-between; align-items:center; gap: 10px;
   }
   .svc-card .price-tear .from{ font-size: 12px; color: var(--ink-soft); }
   .svc-card .price-tear .price{ font-family: var(--mono); font-weight:700; color: var(--primary-dark); }
@@ -553,8 +554,8 @@
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">Layanan</span>
-        <h2><br>Pilih layanan yang kamu butuhkan</h2>
-        <p class="section-sub">Semua layanan sudah termasuk jemput-antar untuk area dalam kota.</p>
+        <h2><br>Pilih layanan yang Anda butuhkan</h2>
+        <p class="section-sub">Semua layanan sudah termasuk jemput antar untuk area dalam kota.</p>
       </div>
 
       <div class="service-grid">
@@ -627,7 +628,7 @@
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12l2-6h14l2 6M5 12h14v6a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-6z"/><circle cx="8" cy="19.5" r="1.2"/><circle cx="16" cy="19.5" r="1.2"/></svg>
           </div>
           <h3>Jadwalkan Penjemputan</h3>
-          <p>Chat via WhatsApp, tentukan waktu jemput yang paling pas buat kamu.</p>
+          <p>Chat via WhatsApp, tentukan waktu jemput yang paling sesuai untuk Anda.</p>
         </div>
         <div class="step reveal">
           <span class="step-no">Langkah 2</span>
@@ -642,7 +643,7 @@
           <div class="icon-badge">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3>Antar ke Rumahmu</h3>
+          <h3>Antar ke Rumah Anda</h3>
           <p>Cucian wangi dan rapi diantar kembali sesuai estimasi di tiket.</p>
         </div>
       </div>
@@ -655,7 +656,7 @@
       <div class="section-head reveal">
         <span class="eyebrow">Harga</span>
         <h2><br>Daftar harga, transparan dari awal</h2>
-        <p class="section-sub">Tidak ada biaya tersembunyi. Ongkos jemput-antar sudah termasuk untuk radius 5 km.</p>
+        <p class="section-sub">Tidak ada biaya tersembunyi. Ongkos jemput antar sudah termasuk untuk radius 5 km.</p>
       </div>
 
       <div class="price-board reveal">
@@ -672,7 +673,7 @@
             <tr><td class="name">Dry Clean Jas / Gaun</td><td class="price">Rp35.000 / pcs</td></tr>
           </tbody>
         </table>
-        <p class="price-note">Lihat daftar harga lengkap dan hitung estimasi biaya cucianmu di halaman Harga.</p>
+        <p class="price-note">Lihat daftar harga lengkap dan hitung estimasi biaya cucian Anda di halaman Harga.</p>
         <div style="margin-top:18px;">
           <a class="btn btn-ghost" href="harga.html">Lihat Semua Harga &amp; Kalkulator</a>
         </div>
@@ -697,7 +698,7 @@
             <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
             <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
           </div>
-          <p>Selama ini paling malas ngangkat cucian ke laundry. Sekarang tinggal chat, dijemput, besoknya sudah wangi di depan pintu.</p>
+          <p>Selama ini saya paling malas membawa cucian ke tempat laundry. Sekarang cukup menghubungi lewat chat, cucian dijemput, dan keesokan harinya sudah wangi di depan pintu.</p>
           <div class="testi-person">
             <div class="testi-avatar">R</div>
             <div><b>Rani A.</b><span>Karyawan kantoran</span></div>
@@ -712,7 +713,7 @@
             <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
             <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
           </div>
-          <p>Sebagai anak kos, ini penyelamat banget. Harganya juga masuk akal dan hasilnya rapi kayak dilipat sendiri.</p>
+          <p>Sebagai anak kos, layanan ini sangat membantu. Harganya juga wajar dan hasilnya rapi seperti dilipat sendiri.</p>
           <div class="testi-person">
             <div class="testi-avatar">D</div>
             <div><b>Dimas P.</b><span>Mahasiswa</span></div>
@@ -727,7 +728,7 @@
             <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
             <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
           </div>
-          <p>Layanan cuci sepatunya sangat bersih. Sepatu kanvas putih saya balik lagi kayak baru beli.</p>
+          <p>Layanan cuci sepatunya sangat bersih. Sepatu kanvas putih saya kembali seperti baru dibeli.</p>
           <div class="testi-person">
             <div class="testi-avatar">S</div>
             <div><b>Sinta W.</b><span>Ibu rumah tangga</span></div>
